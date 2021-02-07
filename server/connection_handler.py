@@ -16,11 +16,16 @@ class ConnectionHandler(threading.Thread):
 
     def run(self):
         c, addr = self.connection_data
-        print('Got connection from', addr)
-        data = c.recv(1024).decode()
+
+        data = c.recv(1024).decode().strip()
         c.close()
 
-        dao = StationsDao()
-        datas = data.split(" ")
-        dao.save(StationData(int(datas[0]), int(datas[1]), int(datas[2]),
-                             datetime.datetime.now().strftime("%Y-%m-%d %H:%M")))
+        if not data:
+            # if empty
+            print("Got empty data ", data, "from address ", addr)
+        else:
+            datas = data.split(" ")
+            print("Got data ", data, "from address ", addr)
+            entity = StationData(int(datas[0]), int(datas[1]), int(datas[2]), datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+            # print('Got connection from', addr, ", data ", entity)
+            StationsDao().save(entity)

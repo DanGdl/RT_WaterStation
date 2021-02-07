@@ -26,7 +26,7 @@ class StationsDao:
             query = str.format("INSERT OR REPLACE INTO station_status (station_id, last_date, alarm1, alarm2)"
                                " VALUES (%d, \"%s\", %d, %d)" %
                                (data.get_station_id(), data.get_date(), data.get_alarm1(), data.get_alarm2()))
-            print("Query ", query)
+
             cursor.execute(query)
             db.commit()
             cursor.close()
