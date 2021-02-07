@@ -12,7 +12,7 @@ DELAY_TIME = 20
 
 def setup_water_station():
     dirname, filename = os.path.split(os.path.abspath(__file__))
-    path = str.format("%s/%s" % (dirname, "resources/status2.txt"))
+    path = str.format("%s/%s" % (dirname, "resources/status.txt"))
     while True:
         content = ""
         try:
