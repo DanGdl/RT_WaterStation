@@ -4,7 +4,7 @@ import sqlite3
 DB_FILE_NAME = "water_stations.db"
 
 
-class StationsDao():
+class StationsDao:
 
     def __init__(self) -> None:
         super().__init__()
